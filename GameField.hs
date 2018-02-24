@@ -13,8 +13,6 @@ import Data.Map (Map)
 import GHC.Generics
 import qualified Data.List as List
 
-import qualified Location
-import Location (Location (Location))
 import qualified Buildings
 import Buildings (Building(TownCentre, Tower))
 import qualified Player
@@ -60,13 +58,10 @@ ownsArea (Field _ players) player area = case players Map.!? player of
 
 ownsLocation :: Field -> Player -> Location -> Bool
 ownsLocation field player location = ownsArea field player $ locationParcel location
---     case players Map.!? player of
---         Just areas -> elem (locationParcel location) areas
---         Nothing -> False
 
 
 locationParcel :: Location -> Area
-locationParcel (Location (x, y)) = Area (Location ((x `div` parcelWidth) * parcelWidth, (y `div` parcelHeight) * parcelHeight)) parcelWidth parcelHeight
+locationParcel (x, y) = Area ((x `div` parcelWidth) * parcelWidth, (y `div` parcelHeight) * parcelHeight) parcelWidth parcelHeight
 
 claim :: Field -> Field -> Area -> Player -> Maybe Field
 claim oldField@(Field oldBuildings oldClaims) field@(Field buildings claims) area player = 

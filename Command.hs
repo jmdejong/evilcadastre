@@ -7,7 +7,6 @@ module Command (
     parse
 ) where
 
-import Location (Location(Location))
 import qualified Buildings
 import Buildings (Building(TownCentre, Farm, Granary, Tower))
 import qualified Data.Text as Text
@@ -29,7 +28,7 @@ parse line = do
     x <- Text.Read.readMaybe $ Text.unpack sx
     y <- Text.Read.readMaybe $ Text.unpack sy
     building <- parseBuilding sbuilding
-    Just (Build (Location (x, y)) building)
+    Just (Build (x, y) building)
 
 
 parseBuilding :: Text -> Maybe Building
@@ -52,12 +51,3 @@ parseBuilding text = case text of
 --     "<" -> Just (Cannon West)
 --     ">" -> Just (Cannon East)
     _ -> Nothing
-
--- parseCommands :: [Text] -> [Command]
--- parseCommands = filterMaybe . map parse
-
-        
-
--- globalPos :: Location -> (Int, Int)
--- globalPos (Location x y) = (x, y)
-

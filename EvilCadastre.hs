@@ -60,10 +60,6 @@ listDirectory path =
 loadInstructions :: IO (Map.Map Player [Command])
 loadInstructions = do
     userNames <- listDirectory "home"
---     let userPaths = map parcelPath userNames
---     publicFiles <- listDirectory "public"
---     let publicPaths = map ("./public/" ++) publicFiles
---     let paths = userPaths -- ++ publicPaths ++ ["./adminparcel.prcl"] :: [FilePath]
     parcelTexts <- readFiles $ map parcelPath userNames
     let parcels = map (\(path, text) -> (getOwnerFromPath path, filterMaybe $ map Command.parse $ T.lines text)) parcelTexts
     return $ Map.fromList parcels

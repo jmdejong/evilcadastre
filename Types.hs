@@ -5,6 +5,7 @@ module Types where
 type Resources = Integer
 
 type Pos = (Int, Int)
+type Location = Pos
 
 data Direction = North | South | East | West
     deriving (Eq, Show)

@@ -10,7 +10,6 @@ import qualified Data.Text as Text
 
 import GameField (Field)
 import Player(Player(Player))
-import Location(Location)
 import Area(Area)
 import Buildings(Building(Farm, Granary, TownCentre, Tower))
 
@@ -24,12 +23,7 @@ instance FromJSON Player where
     parseJSON (String name) = return $ Player $ Text.unpack name
 instance FromJSONKey Player
 
-instance ToJSON Location where
-    toEncoding = genericToEncoding defaultOptions
-instance ToJSONKey Location
 
-instance FromJSON Location
-instance FromJSONKey Location
 
 
 instance ToJSON Area where
