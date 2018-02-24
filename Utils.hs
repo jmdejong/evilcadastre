@@ -6,6 +6,7 @@ module Utils where
 
 import System.IO.Unsafe
 import qualified Data.Text as T
+import Data.Text (Text)
 
 import Data.List
 
@@ -18,7 +19,7 @@ def :: a -> Maybe a -> a
 def _ (Just x) = x
 def d Nothing = d
 
-htmlEscape :: T.Text -> T.Text
+htmlEscape :: Text -> Text
 htmlEscape "" = ""
 htmlEscape text = T.concatMap escape text
     where escape c = case c of
