@@ -9,7 +9,7 @@ module Command (
 
 import Location (Location(Location))
 import qualified Buildings
-import Buildings (Building(TownCentre, Farm, Granary))
+import Buildings (Building(TownCentre, Farm, Granary, Tower))
 import qualified Data.Text as Text
 import Data.Text (Text)
 import qualified Text.Read
@@ -38,6 +38,7 @@ parseBuilding text = case text of
     "towncenter" -> Just TownCentre
     "farm" -> Just Farm
     "granary" -> Just Granary
+    "tower" -> Just Tower
 --     "cannonnorth" -> Just (Cannon North)
 --     "cannonsouth" -> Just (Cannon South)
 --     "cannoneast" -> Just (Cannon East)
@@ -45,6 +46,7 @@ parseBuilding text = case text of
     "O" -> Just TownCentre
     "=" -> Just Farm
     "g" -> Just Granary
+    "T" -> Just Tower
 --     "^" -> Just (Cannon North)
 --     "v" -> Just (Cannon South)
 --     "<" -> Just (Cannon West)

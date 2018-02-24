@@ -4,7 +4,8 @@
 module Area (
     Area(Area),
     contains,
-    getLocations
+    getLocations,
+    expand
 ) where
 
 import GHC.Generics
@@ -28,3 +29,6 @@ getLocations (Area minpos width height) = [Location.fromGlobalPos (x, y) | x <- 
         (xmin, ymin) = Location.globalPos minpos
         xmax = xmin + width
         ymax = ymin + height
+
+expand :: Area -> Int -> Area
+expand (Area (Location (x, y)) width height) size = Area (Location (x-size, y-size)) (width+2*size) (height+2*size)

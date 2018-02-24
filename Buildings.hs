@@ -3,7 +3,7 @@
 {-# LANGUAGE DeriveGeneric #-}
 
 module Buildings (
-    Building(TownCentre, Farm, Granary),
+    Building(TownCentre, Farm, Granary, Tower),
     Resources,
     production,
     buildCost,
@@ -18,7 +18,7 @@ import Data.Text (Text)
 import Types
 
 
-data Building = TownCentre | Farm | Granary -- | Cannon Direction
+data Building = TownCentre | Farm | Granary | Tower-- | Cannon Direction
     deriving (Eq, Show)
 
 
@@ -31,11 +31,13 @@ buildCost :: Building -> Resources
 buildCost TownCentre = 8
 buildCost Farm = 2
 buildCost Granary = 4
+buildCost Tower = 5
 -- buildCost (Cannon _) = 10
 
 runCost :: Building -> Resources
 runCost TownCentre = 1
 runCost Granary = 4
+runCost Tower = 2
 -- runCost (Cannon _) = 2
 runCost _ = 0
 

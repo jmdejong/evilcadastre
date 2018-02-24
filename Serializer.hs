@@ -12,7 +12,7 @@ import GameField (Field)
 import Player(Player(Player))
 import Location(Location)
 import Area(Area)
-import Buildings(Building(Farm, Granary, TownCentre))
+import Buildings(Building(Farm, Granary, TownCentre, Tower))
 
 
 instance ToJSON Player where
@@ -44,11 +44,13 @@ instance ToJSON Building where
     toJSON Farm = String "Farm"
     toJSON TownCentre = String "TownCentre"
     toJSON Granary = String "Granary"
+    toJSON Tower = String "Tower"
 
 
 instance FromJSON Building where
     parseJSON (String "Farm") = return Farm
     parseJSON (String "TownCentre") = return TownCentre
     parseJSON (String "Granary") = return Granary
+    parseJSON (String "Tower") = return Tower
 
 
