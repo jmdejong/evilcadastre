@@ -5,7 +5,9 @@ module GameField (
     empty,
     update,
     playerProduction,
-    commandCost
+    commandCost,
+    buildingMap,
+    playerAreas
 ) where
 
 import qualified Data.Map as Map
@@ -112,7 +114,8 @@ performCommand oldField player resources command@(Build location building) field
     case (build oldField field location building player, resources >= cost) of
          (Just newField, True) -> (newField, resources - cost)
          _ -> (field, resources)
-    where cost = commandCost oldField command
+    where
+        cost = commandCost oldField command
 
 performCommands :: Field -> Player -> [Command] -> Field -> Field
 performCommands oldField player commands field =
