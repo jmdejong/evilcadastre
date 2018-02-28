@@ -1,8 +1,0 @@
-
-
-TODO:
-
-hadastre:
-
-test merging!
-make new json format
