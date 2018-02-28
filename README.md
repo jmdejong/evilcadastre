@@ -2,4 +2,4 @@
 
 A turn based strategy game, with one update per day
 
-See rules.md for the idea
+The main idea is in rules.md
